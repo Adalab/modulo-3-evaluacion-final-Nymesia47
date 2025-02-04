@@ -3,6 +3,7 @@ import {Route, Routes}  from "react-router-dom";
 import { useEffect, useState } from 'react';
 import Header from './Header';
 import api from '../services/api';
+import CharacterList from './CharacterList';
 
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
   const [charactersList, setCharacterList] = useState([]);
 
   useEffect(()=> {
-    api().then((data)=> {
+    api('Gryffindor').then((data)=> {
       setCharacterList(data)
     })
   }, [])
@@ -21,6 +22,7 @@ function App() {
         <Route path = "/" element={
           <>
             <Header/>
+            <CharacterList data={charactersList} />
           </>
         } />
       </Routes>

@@ -1,0 +1,9 @@
+.character-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    & img {
+        width: 200px;
+    }
+}

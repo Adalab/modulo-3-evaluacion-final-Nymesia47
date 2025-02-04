@@ -1,5 +1,5 @@
-function api() {
-    return fetch('https://hp-api.onrender.com/api/characters/house/gryffindor')
+function api(hogwartsHouse) {
+    return fetch(`https://hp-api.onrender.com/api/characters/house/${hogwartsHouse}`)
     .then(resp => resp.json())
 }
 
