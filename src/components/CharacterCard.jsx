@@ -36,5 +36,5 @@ function CharacterCard({info}) {
 export default CharacterCard;
 
 CharacterCard.propTypes = {
-  info: PropTypes.object,
+  info: PropTypes.object
 }

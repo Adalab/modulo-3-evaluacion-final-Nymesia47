@@ -16,5 +16,5 @@ function CharacterList({data}) {
 export default CharacterList;
 
 CharacterList.propTypes = {
-  data: PropTypes.array,
+  data: PropTypes.array
 }
