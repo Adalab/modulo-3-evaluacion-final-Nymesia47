@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 
 function CharacterCard({info}) {
 
@@ -32,4 +33,8 @@ function CharacterCard({info}) {
   )
 }
 
-export default CharacterCard
+export default CharacterCard;
+
+CharacterCard.propTypes = {
+  info: PropTypes.object,
+}

@@ -1,5 +1,7 @@
 import "../styles/CharacterList.scss";
 import CharacterCard from "./CharacterCard"
+import PropTypes from "prop-types";
+
 
 function CharacterList({data}) {
 
@@ -11,4 +13,8 @@ function CharacterList({data}) {
   )
 }
 
-export default CharacterList
+export default CharacterList;
+
+CharacterList.propTypes = {
+  data: PropTypes.array,
+}
