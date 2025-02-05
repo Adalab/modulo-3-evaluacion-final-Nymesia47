@@ -3,9 +3,24 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 5px;
+    width: 80%;
+    margin: 20px auto;
+
+    &-label {
+      display:inline-block;
+      width: 160px;
+      text-align: start;
+      margin-bottom: 5px;
+      margin-top: 10px;
+
+    }
   
     &-input {
       border: 2px solid rgb(131, 60, 60);
-      width: 20%;
+      background-image: url('../images/Hogwarts-Castle.avif');
+      color: white;
+      width: 200px;
+      padding: 3px;
     }
 }

@@ -1,7 +1,11 @@
+import logo from '../images/harry-potter-logo-movie-gold-sticker.jpg';
+import '../styles/Header.scss';
 
 function Header() {
   return (
-    <h1>Harry Potter</h1>
+    <header>
+      <img src={logo} alt="Harry Potter title logo" className="logo"/>
+    </header>
   )
 }
 

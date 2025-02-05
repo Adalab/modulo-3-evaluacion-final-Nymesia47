@@ -26,7 +26,7 @@ function App() {
 
   const useCharacterImage = (info)=> {
     const imgUrl = info.image || "https://placehold.co/200x300";
-    const altText = info.image ? info.name : "Image not available";
+    const altText = info.image ? info.name : "Imagen no disponible";
     return { imgUrl, altText };
   
   }
@@ -46,7 +46,8 @@ function App() {
             <Filters setFilterName={setFilterName} 
             filterName={filterName}
             filterHouse={filterHouse}
-            setFilterHouse={setFilterHouse}/>
+            setFilterHouse={setFilterHouse}
+            />
             <CharacterList data={filterCharacters} 
             useCharacterImage={useCharacterImage}
             filterName={filterName}

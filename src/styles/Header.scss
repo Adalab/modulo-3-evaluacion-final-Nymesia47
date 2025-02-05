@@ -1,0 +1,8 @@
+.logo {
+    background-color: grey;
+    width: 200px;
+
+    @media screen and (min-width: 736px) {
+        width: 280px;
+    }
+}
