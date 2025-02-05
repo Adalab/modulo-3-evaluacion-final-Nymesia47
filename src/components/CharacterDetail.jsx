@@ -35,7 +35,9 @@ function CharacterDetail({data, useCharacterImage}) {
     
             return status;
         }
+
         changesStatus(data);
+        
       }, [data, status]);
     
   return (

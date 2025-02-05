@@ -14,8 +14,6 @@ function App() {
   const [filterName, setFilterName] = useState("");
   const [filterHouse, setFilterHouse] = useState("Gryffindor");
 
-  
-
   useEffect(()=> {
     api(filterHouse).then((data)=> {
       setCharacterList(data)
@@ -33,11 +31,8 @@ function App() {
   }
 
   const {pathname} = useLocation();
-  console.log(pathname)
   const characterRoute = matchPath("/character/:idCharacter", pathname);
   const characterIdUrl = characterRoute ? characterRoute.params.idCharacter : null;
-  console.log(characterRoute); 
-  console.log(characterIdUrl); 
 
   const characterDetail = charactersList.find(character => character.id === characterIdUrl);
   
@@ -51,7 +46,10 @@ function App() {
             filterName={filterName}
             filterHouse={filterHouse}
             setFilterHouse={setFilterHouse}/>
-            <CharacterList data={filterCharacters} useCharacterImage={useCharacterImage}/>
+            <CharacterList data={filterCharacters} 
+            useCharacterImage={useCharacterImage}
+            filterName={filterName}
+            />
           </>
         } />
         <Route path="/character/:idCharacter" element={
