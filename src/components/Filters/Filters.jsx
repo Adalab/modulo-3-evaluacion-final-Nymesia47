@@ -1,3 +1,4 @@
+import '/src/styles/filters.scss'
 import FilterByHouse from "./FilterByHouse";
 import FilterByName from "./FilterByName"
 import PropTypes from "prop-types";
@@ -9,7 +10,7 @@ function Filters({setFilterName, filterName, filterHouse, setFilterHouse}) {
     }
 
   return (
-    <form onSubmit={handleForm}>
+    <form onSubmit={handleForm} className="filter-form">
         <FilterByName setFilterName={setFilterName} filterName={filterName}/>
         <FilterByHouse filterHouse={filterHouse} setFilterHouse={setFilterHouse}/>
     </form>

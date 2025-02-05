@@ -16,23 +16,27 @@ function CharacterDetail({data, useCharacterImage}) {
         "ghost": <TbGhost2Filled/>
     };
 
-    const [status, setStatus] = useState("");
+    let [status, setStatus] = useState("");
     
 
     useEffect(() => {
-        if (data.alive && data.gender === "female") {
-            setStatus("Viva")
-        } else if (data.alive && data.gender === "male") {
-            setStatus("Vivo")
-        } else if (!data.alive && data.gender === "female") {
-            setStatus("Muerta")
-        } else if (!data.alive && data.gender === "male") {
-            setStatus("Muerto")
-        } else {
-            setStatus("Desconocido")
+        const changesStatus = (data)=> {
+            if (data.alive && data.gender === "female") {
+                setStatus("Viva")
+            } else if (data.alive && data.gender === "male") {
+                setStatus("Vivo")
+            } else if (!data.alive && data.gender === "female") {
+                setStatus("Muerta")
+            } else if (!data.alive && data.gender === "male") {
+                setStatus("Muerto")
+            } else {
+                setStatus("Desconocido")
+            }
+    
+            return status;
         }
-        
-      }, [data]);
+        changesStatus(data);
+      }, [data, status]);
     
   return (
    <article>

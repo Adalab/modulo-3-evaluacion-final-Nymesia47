@@ -1,0 +1,11 @@
+.filter-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    &-input {
+      border: 2px solid rgb(131, 60, 60);
+      width: 20%;
+    }
+}
