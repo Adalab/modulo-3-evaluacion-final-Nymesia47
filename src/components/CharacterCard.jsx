@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 function CharacterCard({info}) {
 
@@ -26,9 +27,12 @@ function CharacterCard({info}) {
 
   return (
     <article>
-        <img src={characterImage(info)} alt={imageAltText(info)} />
-        <h3>{info.name}</h3>
-        <p>{info.species}</p>
+        <Link to={`/character/${info.id}`}>
+           <img src={characterImage(info)} alt={imageAltText(info)} />
+           <h3>{info.name}</h3>
+           <p>{info.species}</p>
+        </Link>
+        
     </article>
   )
 }

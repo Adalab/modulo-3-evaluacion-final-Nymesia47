@@ -1,10 +1,11 @@
 import '../styles/App.scss';
-import {Route, Routes}  from "react-router-dom";
+import {matchPath, useLocation, Route, Routes}  from "react-router-dom";
 import { useEffect, useState } from 'react';
 import Header from './Header';
 import api from '../services/api';
 import CharacterList from './CharacterList';
 import Filters from './Filters/Filters';
+import CharacterDetail from './CharacterDetail';
 
 
 function App() {
@@ -20,7 +21,16 @@ function App() {
   }, [filterHouse]);
 
   const filterCharacters = charactersList
-  .filter((character)=> character.name.toLowerCase().includes(filterName))
+  .filter((character)=> character.name.toLowerCase().includes(filterName));
+
+  const {pathname} = useLocation();
+  console.log(pathname)
+  const characterRoute = matchPath("/character/:idCharacter", pathname);
+  const characterIdUrl = characterRoute ? characterRoute.params.idCharacter : null;
+  console.log(characterRoute); 
+  console.log(characterIdUrl); 
+
+  const characterDetail = charactersList.find(character => character.id === characterIdUrl);
   
   return (
     <>
@@ -35,6 +45,11 @@ function App() {
             <CharacterList data={filterCharacters} />
           </>
         } />
+        <Route path="/character/:idCharacter" element={
+          <>
+            <Header/>
+            <CharacterDetail data={characterDetail}/>
+          </>} />
       </Routes>
     </>
   
