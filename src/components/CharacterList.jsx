@@ -16,5 +16,6 @@ function CharacterList({data, useCharacterImage}) {
 export default CharacterList;
 
 CharacterList.propTypes = {
-  data: PropTypes.array
+  data: PropTypes.array,
+  useCharacterImage: PropTypes.func
 }
