@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 function FilterByName({setFilterName, filterName}) {
 
     const handleInput = (ev) => {
-        setFilterName(ev.target.value.toLowerCase());
+        setFilterName(ev.target.value);
     }
 
   return (

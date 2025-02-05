@@ -21,7 +21,7 @@ function App() {
   }, [filterHouse]);
 
   const filterCharacters = charactersList
-  .filter((character)=> character.name.toLowerCase().includes(filterName));
+  .filter((character)=> character.name.toLowerCase().includes(filterName.toLowerCase()));
 
   const useCharacterImage = (info)=> {
     const imgUrl = info.image || "https://placehold.co/200x300";
