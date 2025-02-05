@@ -1,11 +1,13 @@
 import PropTypes from "prop-types";
+import translations from "../services/translations";
 
-function CharacterDetail({data}) {
-   
+function CharacterDetail({data, useCharacterImage}) {
+
+    const {imgUrl, altText} = useCharacterImage(data);
     
   return (
    <article>
-    <img src={data.image} alt="" />
+    <img src={imgUrl} alt={altText} />
     <p>{data.name}</p>
     <p>Estatus: {data.alive}</p>
     <p>Especie: {translations[data.species]}</p>
@@ -19,5 +21,6 @@ function CharacterDetail({data}) {
 export default CharacterDetail;
 
 CharacterDetail.propTypes = {
-    data: PropTypes.object
+    data: PropTypes.object,
+    useCharacterImage: PropTypes.func
 }

@@ -14,6 +14,8 @@ function App() {
   const [filterName, setFilterName] = useState("");
   const [filterHouse, setFilterHouse] = useState("Gryffindor");
 
+  
+
   useEffect(()=> {
     api(filterHouse).then((data)=> {
       setCharacterList(data)
@@ -22,6 +24,13 @@ function App() {
 
   const filterCharacters = charactersList
   .filter((character)=> character.name.toLowerCase().includes(filterName));
+
+  const useCharacterImage = (info)=> {
+    const imgUrl = info.image || "https://placehold.co/200x300";
+    const altText = info.image ? info.name : "Image not available";
+    return { imgUrl, altText };
+  
+  }
 
   const {pathname} = useLocation();
   console.log(pathname)
@@ -42,13 +51,13 @@ function App() {
             filterName={filterName}
             filterHouse={filterHouse}
             setFilterHouse={setFilterHouse}/>
-            <CharacterList data={filterCharacters} />
+            <CharacterList data={filterCharacters} useCharacterImage={useCharacterImage}/>
           </>
         } />
         <Route path="/character/:idCharacter" element={
           <>
             <Header/>
-            <CharacterDetail data={characterDetail}/>
+            <CharacterDetail data={characterDetail} useCharacterImage={useCharacterImage}/>
           </>} />
       </Routes>
     </>

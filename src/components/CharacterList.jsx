@@ -3,9 +3,9 @@ import CharacterCard from "./CharacterCard"
 import PropTypes from "prop-types";
 
 
-function CharacterList({data}) {
+function CharacterList({data, useCharacterImage}) {
 
-    const html = data.map(character => <CharacterCard key={character.id} info={character}/>)
+    const html = data.map(character => <CharacterCard key={character.id} info={character} useCharacterImage={useCharacterImage}/>)
   return (
     <section className="character-list">
         {html}
