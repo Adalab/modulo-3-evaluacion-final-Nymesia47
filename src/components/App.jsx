@@ -6,6 +6,7 @@ import api from '../services/api';
 import CharacterList from './CharacterList';
 import Filters from './Filters/Filters';
 import CharacterDetail from './CharacterDetail';
+import ButtonLink from './ButtonLink';
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
         <Route path="/character/:idCharacter" element={
           <>
             <Header/>
+            <ButtonLink/>
             <CharacterDetail data={characterDetail} useCharacterImage={useCharacterImage}/>
           </>} />
       </Routes>
