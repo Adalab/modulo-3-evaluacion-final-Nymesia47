@@ -11,12 +11,13 @@ function App() {
 
   const [charactersList, setCharacterList] = useState([]);
   const [filterName, setFilterName] = useState("");
+  const [filterHouse, setFilterHouse] = useState("Gryffindor");
 
   useEffect(()=> {
-    api('Gryffindor').then((data)=> {
+    api(filterHouse).then((data)=> {
       setCharacterList(data)
     })
-  }, []);
+  }, [filterHouse]);
 
   const filterCharacters = charactersList
   .filter((character)=> character.name.toLowerCase().includes(filterName))
@@ -27,7 +28,10 @@ function App() {
         <Route path = "/" element={
           <>
             <Header/>
-            <Filters setFilterName={setFilterName} filterName={filterName}/>
+            <Filters setFilterName={setFilterName} 
+            filterName={filterName}
+            filterHouse={filterHouse}
+            setFilterHouse={setFilterHouse}/>
             <CharacterList data={filterCharacters} />
           </>
         } />
