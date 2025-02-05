@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import translations from "../services/translations";
 
 function CharacterCard({info}) {
 
@@ -30,7 +31,7 @@ function CharacterCard({info}) {
         <Link to={`/character/${info.id}`}>
            <img src={characterImage(info)} alt={imageAltText(info)} />
            <h3>{info.name}</h3>
-           <p>{info.species}</p>
+           <p>{translations[info.species]}</p>
         </Link>
         
     </article>
