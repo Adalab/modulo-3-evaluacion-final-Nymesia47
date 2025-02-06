@@ -12,7 +12,7 @@ import UrlNotExistent from './UrlNotExistent';
 
 function App() {
 
-  const [charactersList, setCharacterList] = useState([]);
+  const [charactersList, setCharacterList] = useState(null);
   const [filterName, setFilterName] = useState("");
   const [filterHouse, setFilterHouse] = useState("Gryffindor");
 
@@ -22,8 +22,7 @@ function App() {
       }); 
   }, [filterHouse]);
 
-  const filterCharacters = charactersList
-  .filter((character)=> character.name.toLowerCase().includes(filterName.toLowerCase()));
+  const filterCharacters = charactersList ? charactersList.filter((character)=> character.name.toLowerCase().includes(filterName.toLowerCase())) : [];
 
   const useCharacterImage = (info)=> {
     const imgUrl = info.image || "https://placehold.co/200x300";
@@ -36,7 +35,7 @@ function App() {
   const characterRoute = matchPath("/character/:idCharacter", pathname);
   const characterIdUrl = characterRoute ? characterRoute.params.idCharacter : null;
 
-  const characterDetail = charactersList.find(character => character.id === characterIdUrl);
+  const characterDetail = charactersList ? charactersList.find(character => character.id === characterIdUrl) : null ;
   
   return (
     <>

@@ -3,7 +3,7 @@
 function UrlNotExistent() {
   return (
     <div>
-        <p>El personaje que buscas no existe</p>
+        <p>Esta página no existe</p>
     </div>
   )
 }

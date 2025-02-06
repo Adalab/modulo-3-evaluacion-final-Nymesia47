@@ -5,8 +5,17 @@ import { useEffect, useState } from "react";
 import { FaHeartPulse, FaSkull, FaUser, FaQuestion } from "react-icons/fa6";
 import {GiGiant , GiWerewolf } from "react-icons/gi";
 import {TbGhost2Filled} from "react-icons/tb";
+import UrlNotExistent from "./UrlNotExistent";
 
 function CharacterDetail({data, useCharacterImage}) {
+
+    if(data === null) {
+        return <p>Los detalles del personaje se están cargando</p>;
+    }
+    
+    if (!data) {
+        return <UrlNotExistent/>;
+        }
 
     const {imgUrl, altText} = useCharacterImage(data);
     const speciesIcons = {
@@ -20,23 +29,22 @@ function CharacterDetail({data, useCharacterImage}) {
     
 
     useEffect(() => {
-        const changesStatus = (data)=> {
-            if (data.alive && data.gender === "female") {
-                setStatus("Viva")
-            } else if (data.alive && data.gender === "male") {
-                setStatus("Vivo")
-            } else if (!data.alive && data.gender === "female") {
-                setStatus("Muerta")
-            } else if (!data.alive && data.gender === "male") {
-                setStatus("Muerto")
-            } else {
-                setStatus("Desconocido")
-            }
-    
-            return status;
-        }
-        changesStatus(data);
-      }, [data, status]);
+        
+       
+        const changesStatus = (data) => {
+            if (data.alive && data.gender === "female") return "Viva";
+            if (data.alive && data.gender === "male") return "Vivo";
+            if (!data.alive && data.gender === "female") return "Muerta";
+            if (!data.alive && data.gender === "male") return "Muerto";
+            return "Desconocido";
+        };
+        
+        setStatus(changesStatus(data));
+
+    }, [data]);
+
+  
+
     
   return (
    <article>
