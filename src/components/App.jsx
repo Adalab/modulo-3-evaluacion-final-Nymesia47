@@ -7,6 +7,7 @@ import CharacterList from './CharacterList';
 import Filters from './Filters/Filters';
 import CharacterDetail from './CharacterDetail';
 import ButtonLink from './ButtonLink';
+import UrlNotExistent from './UrlNotExistent';
 
 
 function App() {
@@ -59,7 +60,17 @@ function App() {
             <Header/>
             <ButtonLink/>
             <CharacterDetail data={characterDetail} useCharacterImage={useCharacterImage}/>
-          </>} />
+          </>} 
+        />
+        <Route path="*" element={ 
+          <>
+            <Header/>
+            <ButtonLink/>
+            <UrlNotExistent/>
+          </>
+        }
+        />
+
       </Routes>
     </>
   
