@@ -12,9 +12,10 @@ import UrlNotExistent from './UrlNotExistent';
 
 function App() {
 
-  const [charactersList, setCharacterList] = useState(null);
+  const [charactersList, setCharacterList] = useState([]);
   const [filterName, setFilterName] = useState("");
   const [filterHouse, setFilterHouse] = useState("Gryffindor");
+  const [filterCharacters, setFilterCharacters] = useState(charactersList);
 
   useEffect(()=> {
       api(filterHouse).then((data)=> {
@@ -22,7 +23,17 @@ function App() {
       }); 
   }, [filterHouse]);
 
-  const filterCharacters = charactersList ? charactersList.filter((character)=> character.name.toLowerCase().includes(filterName.toLowerCase())) : [];
+  const changeFilterCharacters = ()=> {
+    if (charactersList && charactersList.length > 0) {
+      setFilterCharacters(charactersList.filter((character)=> character.name.toLowerCase().includes(filterName.toLowerCase())));
+    } else {
+      setFilterCharacters([]);
+    }
+  }
+
+  useEffect(()=>{
+    changeFilterCharacters();
+  }, [filterName, charactersList]);
 
   const useCharacterImage = (info)=> {
     const imgUrl = info.image || "https://placehold.co/200x300";
@@ -51,6 +62,7 @@ function App() {
             <CharacterList data={filterCharacters} 
             useCharacterImage={useCharacterImage}
             filterName={filterName}
+            setFilterCharacters={setFilterCharacters}
             />
           </>
         } />
@@ -76,4 +88,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

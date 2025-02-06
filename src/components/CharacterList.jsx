@@ -1,17 +1,20 @@
 import "../styles/CharacterList.scss";
-// import ButtonSort from "./ButtonSort";
+import ButtonSort from "./ButtonSort";
 import CharacterCard from "./CharacterCard"
 import PropTypes from "prop-types";
 
 
-function CharacterList({data, useCharacterImage, filterName}) {
+function CharacterList({data, useCharacterImage, filterName, setFilterCharacters}) {
   
   if (data && data.length > 0) {
 
     return (
-      <section className="character-list">
-        {/* <ButtonSort data={data}/> */}
-          {data.map((character => <CharacterCard key={character.id} info={character} useCharacterImage={useCharacterImage}/>))}
+      <section >
+        <ButtonSort data={data} setFilterCharacters={setFilterCharacters}/>
+        <div className="character-list">
+          {data.map((character => <CharacterCard key={character.id} info={character} useCharacterImage={useCharacterImage}/>))}  
+        </div>
+          
         
       </section>
     );
@@ -29,5 +32,6 @@ export default CharacterList;
 CharacterList.propTypes = {
   data: PropTypes.array,
   useCharacterImage: PropTypes.func,
-  filterName: PropTypes.string
+  filterName: PropTypes.string,
+  setFilterCharacters: PropTypes.func
 }

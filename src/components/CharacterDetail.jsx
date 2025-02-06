@@ -12,10 +12,10 @@ function CharacterDetail({data, useCharacterImage}) {
     if(data === null) {
         return <p>Los detalles del personaje se están cargando</p>;
     }
-    
+
     if (!data) {
         return <UrlNotExistent/>;
-        }
+    }
 
     const {imgUrl, altText} = useCharacterImage(data);
     const speciesIcons = {
