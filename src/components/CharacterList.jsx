@@ -6,6 +6,16 @@ import PropTypes from "prop-types";
 function CharacterList({data, useCharacterImage, filterName}) {
   
   if (data && data.length > 0) {
+    
+    data.sort(function (a, b){
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (a.name > b.name) {
+        return 1;
+      } 
+      return 0;
+    });
 
     return (
       <section className="character-list">

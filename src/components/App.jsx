@@ -17,9 +17,9 @@ function App() {
   const [filterHouse, setFilterHouse] = useState("Gryffindor");
 
   useEffect(()=> {
-    api(filterHouse).then((data)=> {
-      setCharacterList(data)
-    })
+      api(filterHouse).then((data)=> {
+        setCharacterList(data)
+      }); 
   }, [filterHouse]);
 
   const filterCharacters = charactersList
