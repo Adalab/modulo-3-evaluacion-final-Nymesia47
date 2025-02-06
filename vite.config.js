@@ -10,4 +10,5 @@ export default defineConfig({
     },
     open: true,
   },
+  base: "/modulo-3-evaluacion-final-Nymesia47/"
 });
