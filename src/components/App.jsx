@@ -16,6 +16,7 @@ function App() {
   const [filterName, setFilterName] = useState("");
   const [filterHouse, setFilterHouse] = useState("Gryffindor");
   const [filterCharacters, setFilterCharacters] = useState(charactersList);
+  const [filterGender, setFilterGender] = useState("");
 
   useEffect(()=> {
       api(filterHouse).then((data)=> {
@@ -25,7 +26,10 @@ function App() {
 
   const changeFilterCharacters = ()=> {
     if (charactersList && charactersList.length > 0) {
-      setFilterCharacters(charactersList.filter((character)=> character.name.toLowerCase().includes(filterName.toLowerCase())));
+      setFilterCharacters(charactersList
+        .filter((character)=> character.name.toLowerCase().includes(filterName.toLowerCase()))
+        .filter((character)=> filterGender ? character.gender === filterGender : true)
+      );
     } else {
       setFilterCharacters([]);
     }
@@ -33,7 +37,7 @@ function App() {
 
   useEffect(()=>{
     changeFilterCharacters();
-  }, [filterName, charactersList]);
+  }, [filterName, charactersList, filterGender]);
 
   const useCharacterImage = (info)=> {
     const imgUrl = info.image || "https://placehold.co/200x300";
@@ -58,6 +62,8 @@ function App() {
             filterName={filterName}
             filterHouse={filterHouse}
             setFilterHouse={setFilterHouse}
+            setFilterGender={setFilterGender} 
+            filterGender={filterGender}
             />
             <CharacterList data={filterCharacters} 
             useCharacterImage={useCharacterImage}
