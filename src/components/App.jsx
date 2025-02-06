@@ -8,6 +8,7 @@ import Filters from './Filters/Filters';
 import CharacterDetail from './CharacterDetail';
 import ButtonLink from './ButtonLink';
 import UrlNotExistent from './UrlNotExistent';
+import ButtonReset from './ButtonReset';
 
 
 function App() {
@@ -57,6 +58,12 @@ function App() {
       <Routes>
         <Route path = "/" element={
           <>
+            <ButtonReset setCharacterList={setCharacterList}
+            setFilterName={setFilterName}
+            setFilterHouse={setFilterHouse}
+            setFilterCharacters={setFilterCharacters}
+            setFilterGender={setFilterGender}
+            />
             <Header/>
             <Filters setFilterName={setFilterName} 
             filterName={filterName}
